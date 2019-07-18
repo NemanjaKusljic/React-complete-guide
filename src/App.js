@@ -11,12 +11,30 @@ class App extends Component {
     ]
   }
 
+  switchNameHandler = (newName) => {
+    this.setState( {
+      persons: [
+        {name:newName, age: 27 },
+        {name:'Marina', age: 21 },
+        {name:'Piki', age: 30 }
+      ]
+    })
+  }
+
   render() {
     return (
       <div className="App">
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age}/>
-        <Person name={this.state.persons[1].name} age={this.state.persons[1].age}>Moji hobiji: spavanje</Person>
-        <Person name={this.state.persons[2].name} age={this.state.persons[2].age}/>
+        <button onClick={() => this.switchNameHandler('Maxim')}>Swith name</button>
+        <Person 
+          name={this.state.persons[0].name} 
+          age={this.state.persons[0].age}/>
+        <Person 
+          name={this.state.persons[1].name} 
+          age={this.state.persons[1].age}
+          click ={this.switchNameHandler.bind(this, 'Petar')} /*added property click that references to method*/>Moji hobiji: spavanje</Person> 
+        <Person 
+          name={this.state.persons[2].name} 
+          age={this.state.persons[2].age}/>
       </div>
     );
   }
