@@ -26,7 +26,7 @@ class App extends Component {
     const persons = [...this.state.persons];
     persons[personIndex] = person;
     
-    this.setState( { persons: persons})
+    this.setState( { persons: persons});
   }
 
   togglePersonsHandler = () => {
@@ -55,7 +55,7 @@ class App extends Component {
             name={person.name} 
             age={person.age}
             key={person.id}
-            changed={(event) => this.nameChangeHandler(event, person.id)}/>
+            change={(event) => this.nameChangeHandler(event, person.id)}/>
           })}
         </div>
       )
