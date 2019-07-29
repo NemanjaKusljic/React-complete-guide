@@ -44,6 +44,19 @@ class App extends Component {
 
   render() {
 
+    const style = {
+      backgroundColor: 'green',
+      color: 'white',
+      font: 'inherit',
+      border: '1px solid blue',
+      padding: '8px',
+      /*cursor: 'pointer',
+      ':hover': {
+        backgroundColor: 'lightgreen',
+        color: 'yellow'
+      }*/ // radium way of styling
+    };
+
     let persons = null;
 
     if (this.state.showPersons) {
@@ -59,11 +72,28 @@ class App extends Component {
           })}
         </div>
       )
+
+      style.backgroundColor ='red';
+      /*style[':hover'] = {
+        backgroundColor: 'pink',
+        color: 'white'
+      }*/ // radium fazon
     };
+    
+    let classes = [];
+    if (this.state.persons.length <= 2){
+      classes.push('red'); // classes = ['red']
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push('bold'); // classes = ['red','bold']
+    }
 
     return (
       <div className="App">
-        <button onClick={this.togglePersonsHandler}>Swith name</button>
+        <p className={classes.join(' ')}>This is working</p>
+        <button 
+        style={style}
+        onClick={this.togglePersonsHandler}>Swith name</button>
         {persons}
       </div>
     );
