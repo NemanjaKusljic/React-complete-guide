@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import classes from './App.css';
 import Person from './Person/Person';
 
 class App extends Component {
@@ -44,7 +44,7 @@ class App extends Component {
 
   render() {
 
-    const style = {
+    /*const style = {
       backgroundColor: 'green',
       color: 'white',
       font: 'inherit',
@@ -54,10 +54,11 @@ class App extends Component {
       ':hover': {
         backgroundColor: 'lightgreen',
         color: 'yellow'
-      }*/ // radium way of styling
-    };
+      } radium fazon
+    };*/
 
     let persons = null;
+    let btnClass = '';
 
     if (this.state.showPersons) {
       persons = (
@@ -73,26 +74,27 @@ class App extends Component {
         </div>
       )
 
-      style.backgroundColor ='red';
       /*style[':hover'] = {
         backgroundColor: 'pink',
         color: 'white'
       }*/ // radium fazon
+
+      btnClass = classes.Red;
     };
     
-    let classes = [];
+    let assignedClasses = [];
     if (this.state.persons.length <= 2){
-      classes.push('red'); // classes = ['red']
+      assignedClasses.push(classes.red); // classes = ['red']
     }
     if (this.state.persons.length <= 1) {
-      classes.push('bold'); // classes = ['red','bold']
+      assignedClasses.push(classes.bold); // classes = ['red','bold']
     }
 
     return (
-      <div className="App">
-        <p className={classes.join(' ')}>This is working</p>
+      <div className={classes.App}>
+        <p className={assignedClasses.join(' ')}>This is working</p>
         <button 
-        style={style}
+        className={btnClass}
         onClick={this.togglePersonsHandler}>Swith name</button>
         {persons}
       </div>
